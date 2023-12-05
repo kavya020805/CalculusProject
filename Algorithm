@@ -1,0 +1,37 @@
+Although algorithm development and software development might be out of our reach at the current time we can have a rough draft idea of the software and algorithm behind it used to predict the price.
+First lets see the algorithm to predict the change in randomness from the graph-
+
+
+Inputs-
+num_steps: Number of time steps.
+delta_t: Time increment.
+constant_b: Constant parameter for stochastic component.
+initial_s: Initial value of the variable.
+Initialize-
+Create an empty list s_values to store the values of the variable over time.
+Append the initial value initial_s to s_values.
+Generate Values-
+Loop for each time step from 1 to num_steps:
+Generate a random number random_number from a standard normal distribution.
+Calculate the stochastic component db using the formula: db = constant_b * initial_s * sqrt(delta_t) * random_number.
+Update the current value of the variable new_s = initial_s + db.
+Append new_s to s_values.
+Update initial_s for the next iteration.
+Output-
+Return the list of variable values over time s_values.
+Now we will take the mean of all the multiple db values we got and take it as an input to the following algorithm-
+
+
+Inputs:
+current_s: Current value of the variable.
+delta_t: Time increment.
+constant_a: Constant parameter for the deterministic component.
+constant_b: Constant parameter for the stochastic component.
+mean_db: Mean value of the stochastic component.
+Calculate Deterministic Component:
+deterministic_component = constant_a * current_s * delta_t.
+Calculate Predicted Change in S:
+predicted_delta_s = deterministic_component + mean_db.
+Output:
+Return the predicted change in
+S value: predicted_delta_s.
